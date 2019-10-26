@@ -12,6 +12,7 @@ def okhttpVersion = '3.12.2'
 def retrofitVersion = '2.5.0'
 def gsonVersion = '2.8.1'
 def rxPermissionVersion = '0.9.4'
+def utilcodeVersion = '1.25.8'
 
 
 ext {
@@ -57,6 +58,8 @@ ext {
             "rxpermissions"          : "com.tbruyelle.rxpermissions:rxpermissions:${rxPermissionVersion}@aar",
             //图片处理框架
             "glide"                  : "com.github.bumptech.glide:glide:${glideVersion}",
+
+            "utilcode"               : "com.blankj:utilcode:${utilcodeVersion}",
 
             //test
 //            "junit"                  : "junit:junit:4.12",

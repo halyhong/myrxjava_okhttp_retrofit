@@ -1,4 +1,4 @@
-
+def extDependencies = rootProject.ext.dependencies
 
 //apply plugin: 'com.android.application'
 if (isNeedArHomeModule.toBoolean()) {
@@ -65,5 +65,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
+    annotationProcessor extDependencies["arouter-compiler"]
+    implementation extDependencies["arouter-api"]
     implementation project(':commonlib')
 }

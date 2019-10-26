@@ -76,4 +76,5 @@ dependencies {
     annotationProcessor extDependencies["dagger2-apt-compiler"]
     annotationProcessor extDependencies["butterknife-apt"]
 
+    api extDependencies["utilcode"]
 }
