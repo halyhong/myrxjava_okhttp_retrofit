@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+<!--    <TextView
+        android:id="@+id/te1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#e20707"
+        android:textSize="30dp" />-->
+
+    <com.example.myapplication.widget.bitmapWidget.GlideAsyncImageView
+        android:id="@+id/te1"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:scaleType="fitXY"/>
+
+<!--    <TextView
+        android:id="@+id/te2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#0fec1a"
+        android:textSize="15dp" />-->
+
+
+</LinearLayout>
