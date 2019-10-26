@@ -1,0 +1,79 @@
+apply plugin: 'com.android.library'
+
+//def extVer = rootProject.ext.android
+def extDependencies = rootProject.ext.dependencies
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
+
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation extDependencies["appcompat-v7"]
+    implementation extDependencies["design"]
+    implementation extDependencies["support-v4"]
+    implementation extDependencies["javax.annotation"]
+    implementation extDependencies["cardview-v7"]
+    implementation extDependencies["annotations"]
+    implementation extDependencies["recyclerview-v7"]
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation extDependencies["test:runner"]
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    annotationProcessor extDependencies["arouter-compiler"]
+    implementation extDependencies["arouter-api"]
+    implementation extDependencies["retrofit"]
+    implementation extDependencies["retrofit-converter-gson"]
+    implementation extDependencies["retrofit-adapter-rxjava"]
+    implementation extDependencies["converter-scalars"]
+    implementation extDependencies["okhttp3"]
+    implementation extDependencies["gson"]
+    implementation extDependencies["rxandroid"]
+    implementation extDependencies["rxjava"]
+
+    implementation extDependencies["butterknife"]
+    implementation extDependencies["butterknife-apt"]
+
+    implementation extDependencies["dagger2"]
+    implementation extDependencies["dagger2-apt-compiler"]
+
+    implementation extDependencies["rxpermissions"]
+    implementation extDependencies["timber"]
+    implementation extDependencies["glide"]
+    implementation extDependencies["autolayout"]
+
+    annotationProcessor extDependencies["dagger2-apt-compiler"]
+    annotationProcessor extDependencies["butterknife-apt"]
+
+}

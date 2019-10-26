@@ -1,0 +1,97 @@
+//apply plugin: 'com.android.application'
+
+if (isNeedAsmDemoModule.toBoolean()) {
+    apply plugin: 'com.android.library'
+} else {
+    apply plugin: 'com.android.application'
+}
+
+
+
+android {
+    compileSdkVersion 28
+    buildToolsVersion "28.0.3"
+
+    if (isNeedAsmDemoModule.toBoolean()) {
+        defaultConfig {
+            minSdkVersion 21
+            targetSdkVersion 28
+            versionCode 1
+            versionName "1.0"
+
+            testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        }
+
+    } else {
+        defaultConfig {
+            applicationId "com.example.asm_demo"
+            minSdkVersion 21
+            targetSdkVersion 28
+            versionCode 1
+            versionName "1.0"
+
+            testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        }
+    }
+
+/*    defaultConfig {
+        applicationId "com.example.asm_demo"
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }*/
+
+/*    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }*/
+
+    sourceSets {
+        main {
+            if (isNeedAsmDemoModule.toBoolean()) {
+                manifest.srcFile 'src/main/module/AndroidManifest.xml'
+            } else {
+                manifest.srcFile 'AndroidManifest.xml'
+            }
+
+            res.srcDirs = ['src/main/res']
+        }
+    }
+
+    lintOptions {
+        abortOnError true
+        warningsAsErrors false
+//        check('StringFormatInvalid')//只检测该异常
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    implementation 'com.android.support:appcompat-v7:28.0.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+}
