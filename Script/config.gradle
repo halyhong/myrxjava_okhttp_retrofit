@@ -3,7 +3,7 @@ def SUPPORT_VERSION = "28.0.0"
 //def glideVersion = '4.0.0'
 def glideVersion = '3.7.0'
 //def airpanelVersion = "1.1.0"
-def butterknifeVersion = '8.5.1'
+def butterknifeVersion = '8.4.0'
 //def geniusVersion = '2.0.0'
 def rxandroidVersion = '2.0.1'
 def rxjavaVersion = '2.0.5'
@@ -65,15 +65,15 @@ ext {
 //            "junit"                  : "junit:junit:4.12",
 //            "androidJUnitRunner"     : "android.support.test.runner.AndroidJUnitRunner",
             "timber"                 : "com.jakewharton.timber:timber:4.1.2",
-            "canary-debug"           : "com.squareup.leakcanary:leakcanary-android:1.4-beta2",
-            "canary-release"         : "com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2",
+//            "canary-debug"           : "com.squareup.leakcanary:leakcanary-android:1.4-beta2",
+//            "canary-release"         : "com.squareup.leakcanary:leakcanary-android-no-op:1.4-beta2",
             "Android-AdvancedWebView": "com.github.delight-im:Android-AdvancedWebView:v3.0.0",
             "jpush"                  : "cn.jiguang.sdk:jpush:3.0.9",
             "jpushcore"              : "cn.jiguang.sdk:jcore:1.1.7",
             "scale-image-view"       : "com.davemorrissey.labs:subsampling-scale-image-view:3.6.0",//加载大图，可缩放的ImageView
             "banner"                 : "com.youth.banner:banner:1.4.10",
             "MagicIndicator"         : "com.github.hackware1993:MagicIndicator:1.5.0",//一个tab导航栏
-            "logging"                : "com.squareup.okhttp3:logging-interceptor:3.1.2",
+//            "logging"                : "com.squareup.okhttp3:logging-interceptor:3.1.2",
             "PersistentCookieJar"    : 'com.github.franmontiel:PersistentCookieJar:v1.0.1',//用于持久化cookie工具
             "carrousellayout"        : 'com.dalong:carrousellayout:1.0.0',//类似旋转木马的效果图
             "recyclercoverflow"      : 'com.chenlittleping:recyclercoverflow:1.0.5',//类似旋转木马的效果图的RV

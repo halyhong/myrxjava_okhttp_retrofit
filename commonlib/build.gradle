@@ -24,6 +24,13 @@ android {
 
     }
 
+/*
+    packagingOptions {
+        //解决编译时com.android.builder.merge.DuplicateRelativeFileException: More than one file was found with OS independent path 'META-INF/rxjava.properties'这个错误
+        exclude 'META-INF/rxjava.properties'
+    }
+*/
+
     lintOptions {
         abortOnError false
     }
@@ -40,16 +47,21 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
     implementation extDependencies["appcompat-v7"]
     implementation extDependencies["design"]
     implementation extDependencies["support-v4"]
-    implementation extDependencies["javax.annotation"]
     implementation extDependencies["cardview-v7"]
     implementation extDependencies["annotations"]
     implementation extDependencies["recyclerview-v7"]
     testImplementation 'junit:junit:4.12'
     androidTestImplementation extDependencies["test:runner"]
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    androidTestImplementation ('com.android.support.test.espresso:espresso-core:3.0.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
 
     annotationProcessor extDependencies["arouter-compiler"]
     implementation extDependencies["arouter-api"]
@@ -63,10 +75,12 @@ dependencies {
     implementation extDependencies["rxjava"]
 
     implementation extDependencies["butterknife"]
-    implementation extDependencies["butterknife-apt"]
+//    implementation extDependencies["butterknife-apt"]
 
     implementation extDependencies["dagger2"]
-    implementation extDependencies["dagger2-apt-compiler"]
+/*    implementation (extDependencies["dagger2-apt-compiler"]) {
+        exclude group: 'com.squareup', module: 'javapoet'
+    }*/
 
     implementation extDependencies["rxpermissions"]
     implementation extDependencies["timber"]
@@ -76,5 +90,6 @@ dependencies {
     annotationProcessor extDependencies["dagger2-apt-compiler"]
     annotationProcessor extDependencies["butterknife-apt"]
 
-    api extDependencies["utilcode"]
+    compileOnly extDependencies["javax.annotation"]
+//    api extDependencies["utilcode"]
 }
