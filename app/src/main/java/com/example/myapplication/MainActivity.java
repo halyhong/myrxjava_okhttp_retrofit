@@ -5,11 +5,13 @@ package com.example.myapplication;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +24,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestBuilder;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
+import com.example.myapplication.Activity.ARfragmentActivity;
 import com.example.myapplication.Activity.ViewPageActivity;
 import com.example.myapplication.Callbacks.IHttpServiceListener;
 import com.example.myapplication.IPresenter.IView;
@@ -40,10 +43,6 @@ public class MainActivity extends AppCompatActivity implements IView {
 
     RecyclerView recyclerView;
 
-    String s_te1[] = {"内容一", "内容一", "内容一"};
-
-    String s_te2[] = {"内容二", "内容二", "内容二"};
-
     List<ImageInfo> mList = new ArrayList<>();
 
     MyAdapter myAdapter;
@@ -61,13 +60,17 @@ public class MainActivity extends AppCompatActivity implements IView {
 
         recyclerView.setLayoutManager(new GridLayoutManager(this,3));
 
+        recyclerView.setOnScrollListener(new RecyclerView.OnScrollListener() {
+            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
+            }
+
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+            }
+        });
+
         myAdapter = new MyAdapter();
 
         recyclerView.setAdapter(myAdapter);
-
-//        for(int i=0; i<10; i++) {
-//            mList.add(String.valueOf(i));
-//        }
 
         mList.add(new ImageInfo(1, "http://www.33lc.com/uploadfile/2018/0420/20180420042827555.jpg"));
         mList.add(new ImageInfo(2, "http://m.360buyimg.com/pop/jfs/t22906/274/1763657905/20550/870502f7/5b697ab4N94033349.jpg"));
@@ -142,6 +145,7 @@ public class MainActivity extends AppCompatActivity implements IView {
 
     private void startPagerActivity() {
         Intent i = new Intent(this, ViewPageActivity.class);
+//        Intent i = new Intent(this, ARfragmentActivity.class);
         ActivityCompat.startActivity(this, i, null);
     }
 
@@ -194,10 +198,6 @@ public class MainActivity extends AppCompatActivity implements IView {
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
             MyHolder mm = (MyHolder) holder;
 
-//            将数据映射到控件中
-//            mm.te1.setText(mList.get(position));
-//            mm.te2.setText(s_te2[position]);
-
 //            mm.im1.setImageResource(R.mipmap.ic_launcher_round);
 
             mm.onBind(position);
@@ -232,10 +232,6 @@ public class MainActivity extends AppCompatActivity implements IView {
 
             public MyHolder(View itemView) {
                 super(itemView);
-
-//                实例化子对象，把对象和列表项布局文件中的id绑定
-//                te1 = itemView.findViewById(R.id.te1);
-//                te2 = itemView.findViewById(R.id.te2);
 
                 im1 = itemView.findViewById(R.id.te1);
             }

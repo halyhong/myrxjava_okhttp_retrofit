@@ -31,6 +31,8 @@
         </activity>
         <activity android:name=".Activity.RxListActivity">
         </activity>
+        <activity android:name=".Activity.ARfragmentActivity">
+        </activity>
     </application>
 
 </manifest>

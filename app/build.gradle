@@ -83,6 +83,9 @@ dependencies {
     implementation 'com.jakewharton:butterknife-compiler:8.5.1'
     annotationProcessor "com.jakewharton:butterknife-compiler:8.5.1"
 
+    annotationProcessor extDependencies["arouter-compiler"]
+    implementation extDependencies["arouter-api"]
+
     implementation(name: 'indicator-release', ext: 'aar')
 
     implementation 'com.astuetz:pagerslidingtabstrip:1.0.1'
@@ -93,7 +96,10 @@ dependencies {
     implementation extDependencies["arouter-api"]
     annotationProcessor extDependencies["arouter-compiler"]
 
-    implementation project(':arhome')
+    if (isNeedArHomeModule.toBoolean()) {
+        implementation project(':arhome')
+    }
+
     implementation project(':commonlib')
 
 }

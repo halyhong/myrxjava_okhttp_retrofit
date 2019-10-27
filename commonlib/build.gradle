@@ -75,12 +75,8 @@ dependencies {
     implementation extDependencies["rxjava"]
 
     implementation extDependencies["butterknife"]
-//    implementation extDependencies["butterknife-apt"]
 
     implementation extDependencies["dagger2"]
-/*    implementation (extDependencies["dagger2-apt-compiler"]) {
-        exclude group: 'com.squareup', module: 'javapoet'
-    }*/
 
     implementation extDependencies["rxpermissions"]
     implementation extDependencies["timber"]

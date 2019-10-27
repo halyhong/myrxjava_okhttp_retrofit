@@ -19,10 +19,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.myapplication.Fragment.TestFragment;
 import com.example.myapplication.Fragment.fragment;
 import com.example.myapplication.Fragment.fragment1;
 import com.example.myapplication.Fragment.fragment2;
+import com.example.myapplication.Fragment.fragment3;
 import com.example.myapplication.R;
 import com.viewpagerindicator.TabPageIndicator;
 
@@ -31,6 +34,7 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+
 
 public class ViewPageActivity extends FragmentActivity {
     private static final String[] CONTENT = new String[] { "Recent", "Artists", "Albums", "Songs", "Playlists", "Genres" };
@@ -43,12 +47,16 @@ public class ViewPageActivity extends FragmentActivity {
     //    @BindView(R.id.myViewPager)
     private ViewPager vper;
 
+    private Fragment f1;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.pager_activity);
 //        ButterKnife.bind(this);
+
+        ARouter.getInstance().inject(this);
         initView();
         initData();
     }
@@ -66,9 +74,10 @@ public class ViewPageActivity extends FragmentActivity {
 
     @TargetApi(Build.VERSION_CODES.M)
     private void initData() {
-        arr.put(0, new fragment1());
+        f1 = new fragment1();
+        arr.put(0, f1);
         arr.put(1, new fragment2());
-        arr.put(2, new fragment1());
+        arr.put(2, new fragment3());
 //        list = new ArrayList<>();
 //        list.add(new fragment1());
 //        list.add(new fragment2());
@@ -216,4 +225,14 @@ public class ViewPageActivity extends FragmentActivity {
 //            return CONTENT.length;
 //        }
 //    }
+
+    public void startFragment() {
+//        Fragment fragment = (Fragment) ARouter.getInstance().build("/app/fragment1").navigation();
+
+//        this.getSupportFragmentManager().beginTransaction().add(f1, fragment1.class.getName()).commit();
+    }
+
+    public void setCurrentItem(int item) {
+        vper.setCurrentItem(item);
+    }
 }

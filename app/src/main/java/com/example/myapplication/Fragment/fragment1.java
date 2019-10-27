@@ -12,9 +12,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.example.myapplication.Activity.ARfragmentActivity;
 import com.example.myapplication.Activity.PagerSlidingTabActivity;
 import com.example.myapplication.R;
 
+
+@Route(path = "/app/fragment1")
 public class fragment1 extends fragment {
 
     @Override
@@ -68,7 +72,8 @@ public class fragment1 extends fragment {
     }
 
     private void startSlidingActivity() {
-        Intent i = new Intent(getActivity(), PagerSlidingTabActivity.class);
+//        Intent i = new Intent(getActivity(), PagerSlidingTabActivity.class);
+        Intent i = new Intent(getActivity(), ARfragmentActivity.class);
         ActivityCompat.startActivity(getActivity(), i, null);
     }
 }
