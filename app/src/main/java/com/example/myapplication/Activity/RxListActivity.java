@@ -86,4 +86,9 @@ public class RxListActivity extends AppCompatActivity implements Irxview {
         recyclerView.setAdapter(mAdapter);
 //        mAdapter.notifyDataSetChanged();
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
 }

@@ -79,6 +79,11 @@ public class fragment2 extends fragment {
         super.setUserVisibleHint(isVisibleToUser);
     }
 
+    @Override
+    public boolean getUserVisibleHint() {
+        return super.getUserVisibleHint();
+    }
+
     private void startRxActivity() {
         Intent i = new Intent(getActivity(), RxListActivity.class);
         ActivityCompat.startActivity(getActivity(), i, null);

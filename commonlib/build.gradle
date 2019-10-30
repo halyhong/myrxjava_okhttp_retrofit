@@ -87,5 +87,5 @@ dependencies {
     annotationProcessor extDependencies["butterknife-apt"]
 
     compileOnly extDependencies["javax.annotation"]
-//    api extDependencies["utilcode"]
+    api extDependencies["utilcode"]
 }

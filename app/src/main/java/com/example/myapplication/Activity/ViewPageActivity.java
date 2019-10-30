@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -48,6 +49,9 @@ public class ViewPageActivity extends FragmentActivity {
     private ViewPager vper;
 
     private Fragment f1;
+
+
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -96,7 +100,7 @@ public class ViewPageActivity extends FragmentActivity {
         indicator.setViewPager(vper);
     }
 
-
+//    public class myViewPagerAdapter extends FragmentPagerAdapter {
     public class myViewPagerAdapter extends FragmentPagerAdapter {
         private SparseArray<Fragment> mArr;
 //        private List<Fragment> mArr;
@@ -142,6 +146,11 @@ public class ViewPageActivity extends FragmentActivity {
 //            return super.getPageTitle(position);
             String s = ((fragment)mArr.get(position)).getTitle().toUpperCase();
             return s;
+        }
+
+        @Override
+        public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+            super.destroyItem(container, position, object);
         }
     }
 
